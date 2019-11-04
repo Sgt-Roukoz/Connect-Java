@@ -26,8 +26,9 @@ public class Gameplay {
     public void Generate(){//Generating board values
         Random rand = new Random();
         //Setting all sqaures to empty
+        int co;
         for(int ro = 0; ro < 6; ro++){
-            for(int co = 0; co < 7; co++){
+            for(co = 0; co < 7; co++){
                 Board[ro][co]=0;
             }
         }
@@ -52,10 +53,10 @@ public class Gameplay {
             amtPowerups++;
         }
     }
+    //board is 700w - 600h
     public void drawBoard(int[][]Board){
-        int r;
         int c;
-        for(r = 0; r < 6; r++){
+        for(int r = 0; r < 6; r++){
             for(c = 0; c < 7; c++){
                 switch(Board[r][c]){
                     case 0:
