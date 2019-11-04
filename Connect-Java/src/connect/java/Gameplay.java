@@ -10,7 +10,7 @@ import java.util.Random;
  * @author S347096083
  */
 public class Gameplay {
-    protected int[][] Board = new int[6][8];
+    protected int[][] Board = new int[6][7];
     private int[] OverlapY = new int[5];
     private int[] OverlapX = new int[5];
     private int amtPowerups=0;
@@ -27,7 +27,7 @@ public class Gameplay {
         Random rand = new Random();
         //Setting all sqaures to empty
         for(int ro = 0; ro < 6; ro++){
-            for(int co = 0; co < 8; co++){
+            for(int co = 0; co < 7; co++){
                 Board[ro][co]=0;
             }
         }
@@ -35,7 +35,7 @@ public class Gameplay {
         while(amtPowerups<5){
             while(true){
                 row = rand.nextInt(6);
-                column = rand.nextInt(8);
+                column = rand.nextInt(7);
                 for(int check = 0; check < 5; check++){
                     if(OverlapX[check] == column && OverlapY[check] == row)
                         continue;
@@ -56,7 +56,7 @@ public class Gameplay {
         int r;
         int c;
         for(r = 0; r < 6; r++){
-            for(c = 0; c < 8; c++){
+            for(c = 0; c < 7; c++){
                 switch(Board[r][c]){
                     case 0:
                         //set empty
