@@ -52,4 +52,32 @@ public class Gameplay {
             amtPowerups++;
         }
     }
+    public void drawBoard(int[][]Board){
+        int r;
+        int c;
+        for(r = 0; r < 6; r++){
+            for(c = 0; c < 8; c++){
+                switch(Board[r][c]){
+                    case 0:
+                        //set empty
+                        break;
+                    case 1:
+                        //set to red piece
+                        break;
+                    case 2:
+                        //set to black piece
+                        break;
+                    case 3:
+                        //set to powerup1
+                        break;
+                    case 4:
+                        //set to powerup2
+                        break;
+                    case 5:
+                        //set to powerup3
+                        break;
+                }
+            }
+        }
+    }
 }
