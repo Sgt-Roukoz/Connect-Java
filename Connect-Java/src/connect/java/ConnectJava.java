@@ -66,17 +66,17 @@ public static GraphicsUI gui = new GraphicsUI();
             else {
                 pointx = 90090;
             }
-        System.out.println(mouse_x + " : " + mouse_y);
         }
     
     public static void main(String[] args) {
         ConnectJava cj = new ConnectJava();
         cj.setVisible(true);
-        //EventQueue.invokeLater(() -> {ConnectJava cj = new ConnectJava();cj.setVisible(true);});
+        Gameplay gp = new Gameplay();
+        gp.Generate();
         
         while(true){
             checkMouseInfo(cj);
-            gui.refresh(pointx);
+            gui.refresh(pointx, gp.Board);
         }
     }
 }

@@ -53,32 +53,4 @@ public class Gameplay {
             amtPowerups++;
         }
     }
-    //board is 700w - 600h
-    public void drawBoard(int[][]Board){
-        int c;
-        for(int r = 0; r < 6; r++){
-            for(c = 0; c < 7; c++){
-                switch(Board[r][c]){
-                    case 0:
-                        //set empty
-                        break;
-                    case 1:
-                        //set to red piece
-                        break;
-                    case 2:
-                        //set to yellow piece
-                        break;
-                    case 3:
-                        //set to powerup1
-                        break;
-                    case 4:
-                        //set to powerup2
-                        break;
-                    case 5:
-                        //set to powerup3
-                        break;
-                }
-            }
-        }
-    }
 }

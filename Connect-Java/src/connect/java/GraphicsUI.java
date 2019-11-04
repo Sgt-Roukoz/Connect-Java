@@ -1,4 +1,3 @@
-
 package connect.java;
 import java.awt.Graphics;
 import java.awt.EventQueue;
@@ -10,11 +9,13 @@ public class GraphicsUI extends JPanel {
     int height = ConnectJava.height;
     int width = ConnectJava.width;
     int pointx = ConnectJava.pointx;
-    
+    int[][] Board;
+            
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         highlight(g);
+        drawBoard(g);
         drawLines(g);
     }
     
@@ -39,12 +40,49 @@ public class GraphicsUI extends JPanel {
         g.fillRect(pointx, 0, 100, height);
     }
     
-    public void refresh(int point){
+    public void refresh(int point, int[][] board){
         pointx = point;
+        Board = board;
         repaint();
+    }
+    
+    
+    public void drawBoard(Graphics g){
+        int c;
+        for(int r = 0; r < 6; r++){
+            for(c = 0; c < 7; c++){
+                switch(Board[r][c]){
+                    case 0:
+                        //set empty
+                        break;
+                    case 1:
+                        g.setColor(Color.red);
+                        g.fillRect((100*r), (100*c), 100, 100);
+                        break;
+                    case 2:
+                        g.setColor(Color.yellow);
+                        g.fillRect((100*r), (100*c), 100, 100);
+                        break;
+                    case 3:
+                        g.setColor(Color.green);
+                        g.fillRect((100*r), (100*c), 100, 100);
+                        break;
+                    case 4:
+                        g.setColor(Color.cyan);
+                        g.fillRect((100*r), (100*c), 100, 100);
+                        break;
+                    case 5:
+                        g.setColor(Color.blue);
+                        g.fillRect((100*r), (100*c), 100, 100);
+                        break;
+                }
+            }
+        }
     }
     
     public GraphicsUI(){
         setPreferredSize(new Dimension(width, height));
     }
 }
+
+
