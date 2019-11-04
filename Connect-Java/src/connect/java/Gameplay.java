@@ -66,7 +66,7 @@ public class Gameplay {
                         //set to red piece
                         break;
                     case 2:
-                        //set to black piece
+                        //set to yellow piece
                         break;
                     case 3:
                         //set to powerup1
