@@ -10,47 +10,41 @@ import java.util.Random;
  * @author S347096083
  */
 public class Gameplay {
-    protected int[][] Board = new int[6][7];
-    private int[] OverlapY = new int[5];
-    private int[] OverlapX = new int[5];
-    private int amtPowerups=0;
-    private int row;
-    private int column;
-    private int Powerup;
+    //protected int[][] Board = new int[6][7];
+    private int row = 0;
+    private int column = 0;
+    private int Powerup = 0;
     /*
     Empty squares have value 0
     Squares with red pieces have value 1
     Squares with yellow pieces have value 2
     Squares with powerups have value 3/4/5
     */
-    public void Generate(){//Generating board values
+    public int[][] Generate(int[][]Board){//Generating board values
         Random rand = new Random();
         //Setting all sqaures to empty
-        int co;
         for(int ro = 0; ro < 6; ro++){
-            for(co = 0; co < 7; co++){
+            for(int co = 0; co < 7; co++){
                 Board[ro][co]=0;
             }
         }
         //Setting 5 random squares(no overlap) to random powerups
-        while(amtPowerups<5){
+        for(int numpowerups = 0; numpowerups<5;numpowerups++){
             while(true){
                 row = rand.nextInt(6);
                 column = rand.nextInt(7);
-                for(int check = 0; check < 5; check++){
-                    if(OverlapX[check] == column && OverlapY[check] == row)
-                        continue;
-                    else{
-                    //Nothing
-                    }
+                if(Board[row][column] == 3 || Board[row][column] == 4 ||Board[row][column] == 5){
+                    //nothing
                 }
-                break;
+                else{
+                    break;
+                }
             }
+            System.out.println("Row:"+row);
+            System.out.println("column"+column);
             Powerup = rand.nextInt(3);
-            Board[row][column] = (Powerup+1);
-            OverlapY[amtPowerups]=row;
-            OverlapX[amtPowerups]=column;
-            amtPowerups++;
+            Board[row][column] = (Powerup+3);
         }
+        return Board;
     }
 }

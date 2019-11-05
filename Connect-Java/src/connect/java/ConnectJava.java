@@ -14,6 +14,7 @@ public class ConnectJava extends JFrame{
 public static int width = 700;
 public static int height = 600;
 public static int pointx = 90999;
+protected static int[][] Board = new int[6][7];
 
 public static GraphicsUI gui = new GraphicsUI();
 
@@ -72,11 +73,10 @@ public static GraphicsUI gui = new GraphicsUI();
         ConnectJava cj = new ConnectJava();
         cj.setVisible(true);
         Gameplay gp = new Gameplay();
-        gp.Generate();
-        
+        Board = gp.Generate(Board);       
         while(true){
             checkMouseInfo(cj);
-            gui.refresh(pointx, gp.Board);
+            gui.refresh(pointx, Board);
         }
     }
 }

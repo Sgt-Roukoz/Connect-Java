@@ -9,7 +9,7 @@ public class GraphicsUI extends JPanel {
     int height = ConnectJava.height;
     int width = ConnectJava.width;
     int pointx = ConnectJava.pointx;
-    int[][] Board;
+    int[][]Board = new int[6][7];
             
     @Override
     public void paintComponent(Graphics g){
@@ -52,28 +52,26 @@ public class GraphicsUI extends JPanel {
         for(int r = 0; r < 6; r++){
             for(c = 0; c < 7; c++){
                 switch(Board[r][c]){
-                    case 0:
-                        //set empty
-                        break;
+                    
                     case 1:
                         g.setColor(Color.red);
-                        g.fillRect((100*r), (100*c), 100, 100);
+                        g.fillRect((100*c), (100*r), 100, 100);
                         break;
                     case 2:
                         g.setColor(Color.yellow);
-                        g.fillRect((100*r), (100*c), 100, 100);
+                        g.fillRect((100*c), (100*r), 100, 100);
                         break;
                     case 3:
                         g.setColor(Color.green);
-                        g.fillRect((100*r), (100*c), 100, 100);
+                        g.fillRect((100*c), (100*r), 100, 100);
                         break;
                     case 4:
                         g.setColor(Color.cyan);
-                        g.fillRect((100*r), (100*c), 100, 100);
+                        g.fillRect((100*c), (100*r), 100, 100);
                         break;
                     case 5:
                         g.setColor(Color.blue);
-                        g.fillRect((100*r), (100*c), 100, 100);
+                        g.fillRect((100*c), (100*r), 100, 100);
                         break;
                 }
             }
