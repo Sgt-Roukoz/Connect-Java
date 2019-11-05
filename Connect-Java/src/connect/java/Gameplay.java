@@ -47,7 +47,7 @@ public class Gameplay {
                 break;
             }
             Powerup = rand.nextInt(3);
-            Board[row][column] = (Powerup+1);
+            Board[row][column] = (Powerup+3);
             OverlapY[amtPowerups]=row;
             OverlapX[amtPowerups]=column;
             amtPowerups++;
