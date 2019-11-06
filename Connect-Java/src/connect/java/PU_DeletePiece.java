@@ -5,38 +5,42 @@
  */
 package connect.java;
 
-import java.awt.Color;
-import java.awt.Graphics;
+import java.awt.MouseInfo;
 
 /**
  *
  * @author S347096083
  */
 public class PU_DeletePiece extends PowerUps{
-    int height = ConnectJava.height;
-    int width = ConnectJava.width;
-    int pointx = ConnectJava.pointx;
     int[][] Board; 
-    public void highlight(Graphics g){ // base method for painting the board
-        g.setColor(Color.gray);
-        g.fillRect(pointx, 0, 100, height);
-    }
-    public void PU_DeletePiece(int[][] Board, Graphics g){
+    
+    public void DeletePiece(int click_y, int click_x, int[][] Board){
         System.out.println("You can delete one of your opponent's pieces!");
         
-        int x = 2;
-        int y = 3; //Using this position until I figure out a way to find which square they picked 
-        if (Board[x][y] == 0 || Board[x][y] == 3 || Board[x][y] == 4 || Board[x][y] == 5) {
+        
+        if (Board[click_x][click_y] == 0 || Board[click_x][click_y] == 3 || Board[click_x][click_y] == 4 || Board[click_x][click_y] == 5) {
             System.out.println("You cannot pick a powerup to vanish");
         }
-        else if (Board[x][y] == 2){ //Using 2 as opponent until I figure out a way to check whose turn it is
-            System.out.println("You cannot pick your own piece");
-        } else{
+        else{
+           for(int somevar = click_x; somevar > -1; somevar--){
+                switch(Board[somevar][click_y]){
+                    case 0:
+                        continue;                 
+                    case 1:
+                        Board[somevar + 1][click_y] = 1; //red pieces
+                        Board[somevar][click_y] = 0; //temporarily sets space above the space modified to white
+                        continue;
+                    case 2:
+                        Board[somevar + 1][click_y] = 2; //yellow pieces
+                        Board[somevar][click_y] = 0; //temporarily sets space above the space modified to white
+                        continue;
+                }
+            }
            
-           g.setColor(Color.white);
-           g.fillRect((100*x), (100*y), 100, 100);
-        }
-        
+        }        
     }
-    
+    public void switchPiece(int click_y, int click_x, int[][] Board){
+        System.out.println("You can switch one of your opponent's pieces for your own!");
+        //more stuff here 
+    }
 }
