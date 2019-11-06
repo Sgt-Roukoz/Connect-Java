@@ -39,7 +39,7 @@ public class PU_DeletePiece extends PowerUps{
            
         }        
     }
-    public void switchPiece(int click_y, int click_x, int[][] Board){
+    public void switchPiece(int click_y, int click_x, int Turn, int[][] Board){
         System.out.println("You can switch one of your opponent's pieces for your own!");
         //more stuff here 
     }

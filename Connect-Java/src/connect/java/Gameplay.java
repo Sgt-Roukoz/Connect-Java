@@ -16,6 +16,8 @@ public class Gameplay {
     private int Powerup = 0;
     private int turnnum = 1;
     private int breakout;
+    private static int counter1 = 0;
+    private static int counter2 = 0;
     /*
     Empty squares have value 0
     Squares with red pieces have value 1
@@ -82,9 +84,8 @@ public class Gameplay {
                     else{
                         turnnum = 1;
                     }
-                    ConnectJava.checkMouseInfo(ConnectJava.cj);
-                    //while true for mouse values
-                    use.DeletePiece(Column, Row, Board);
+                    //Call DeletePiece setup method
+                    //use.DeletePiece(Column, Row, Board);
                     breakout = 1;
                     break;
                 case 4:
@@ -93,7 +94,7 @@ public class Gameplay {
                     break;
                 case 5:
                     Board[checkrow][Column] = turnnum;
-                    
+                    //Call switch piece setup method
                     //use.switchPiece(Column, Row, turnnum, Board);
                     if(turnnum == 1){
                         turnnum = 2;
@@ -108,7 +109,139 @@ public class Gameplay {
                 break;
             }
         }
-        
+        checkWin(Board);
         return Board;
+    }
+    public static void checkWin(int[][]Board){
+        for(int checkRow = 0; checkRow < 6; checkRow++){
+            counter1 = 0;
+            counter2 = 0;
+            for(int checkColumn = 0; checkColumn < 7; checkColumn++){
+                if (Board[checkRow][checkColumn] == 1){
+                    counter1++;
+                }
+                else{
+                    counter1 = 0;
+                }             
+                if (Board[checkRow][checkColumn] == 2){
+                    counter2++;
+                }
+                else{
+                    counter2 = 0;
+                }
+                if (counter1>=4){
+                    //This is a placeholder for what will actually happen should someone win
+                    System.out.println("Red wins!");
+                    return;//stops method execution
+                }
+                else if (counter2>=4){
+                    //This is a placeholder for what will actually happen should someone win
+                    System.out.println("Yellow wins!");
+                    return;
+                }   
+                else{
+                    //do nothing
+                }
+            }
+        }
+        for(int checkColumn2 = 0; checkColumn2 < 7; checkColumn2++){
+            counter1 = 0;
+            counter2 = 0;
+            for(int checkRow2 = 0; checkRow2 < 6; checkRow2++){
+                if (Board[checkRow2][checkColumn2] == 1){
+                    counter1++;
+                }
+                else{
+                    counter1 = 0;
+                }             
+                if (Board[checkRow2][checkColumn2] == 2){
+                    counter2++;
+                }
+                else{
+                    counter2 = 0;
+                }
+                if (counter1>=4){
+                    //This is a placeholder for what will actually happen should someone win
+                    System.out.println("Red wins!");
+                    return;
+                }
+                else if (counter2>=4){
+                    //This is a placeholder for what will actually happen should someone win
+                    System.out.println("Yellow wins!");
+                    return;
+                }   
+                else{
+                    //do nothing
+                }
+            }
+        }
+        //front diagonal
+        for(int rows = 0; rows < 3; rows++){
+            for(int columns = 0; columns < 4; columns++){
+                counter1 = 0;
+                counter2 = 0;
+                for(int cycle = 0; cycle < 4; cycle++){
+                    if (Board[rows+cycle][columns+cycle] == 1){
+                        counter1++;
+                    }
+                    else{
+                        counter1 = 0;
+                    }
+                    if (Board[rows+cycle][columns+cycle] == 2){
+                        counter2++;
+                    }
+                    else{
+                        counter2 = 0;
+                    }
+                }
+                if (counter1>=4){
+                    //This is a placeholder for what will actually happen should someone win
+                    System.out.println("Red wins!");
+                    return;
+                }
+                else if (counter2>=4){
+                    //This is a placeholder for what will actually happen should someone win
+                    System.out.println("Yellow wins!");
+                    return;
+                }   
+                else{
+                    //do nothing
+                }  
+            }
+        }
+        //back diagonal
+        for(int rows = 0; rows < 3; rows++){
+            for(int columns = 6; columns > 2; columns--){
+                counter1 = 0;
+                counter2 = 0;
+                for(int cycle = 0; cycle < 4; cycle++){
+                    if (Board[rows+cycle][columns-cycle] == 1){
+                        counter1++;
+                    }
+                    else{
+                        counter1 = 0;
+                    }
+                    if (Board[rows+cycle][columns-cycle] == 2){
+                        counter2++;
+                    }
+                    else{
+                        counter2 = 0;
+                    }
+                }
+                if (counter1>=4){
+                    //This is a placeholder for what will actually happen should someone win
+                    System.out.println("Red wins!");
+                    return;
+                }
+                else if (counter2>=4){
+                    //This is a placeholder for what will actually happen should someone win
+                    System.out.println("Yellow wins!");
+                    return;
+                }   
+                else{
+                    //do nothing
+                }  
+            }
+        }
     }
 }
