@@ -209,7 +209,7 @@ public class Gameplay {
                 }  
             }
         }
-        //back diagonal
+        //back diagonal 
         for(int rows = 0; rows < 3; rows++){
             for(int columns = 6; columns > 2; columns--){
                 counter1 = 0;
