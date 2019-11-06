@@ -14,6 +14,8 @@ public class Gameplay {
     private int row = 0;
     private int column = 0;
     private int Powerup = 0;
+    private int turnnum = 1;
+    private int breakout;
     /*
     Empty squares have value 0
     Squares with red pieces have value 1
@@ -45,6 +47,59 @@ public class Gameplay {
             Powerup = rand.nextInt(3);
             Board[row][column] = (Powerup+3);
         }
+        return Board;
+    }
+    
+    public int[][] placePiece(int Column, int[][]Board){
+        PU_DeletePiece use = new PU_DeletePiece();
+        breakout = 0;
+        for(int checkrow = 5; checkrow<0 && breakout == 0; checkrow--){
+            switch(Board[checkrow][column]){
+                case 0:
+                    Board[checkrow][column] = turnnum;
+                    if(turnnum == 1){
+                        turnnum = 2;
+                    }
+                    else{
+                        turnnum = 1;
+                    }
+                    breakout = 1;
+                    break;
+                case 1:
+                    //already filled square
+                    break;
+                case 2:
+                    //already filled square
+                    break;
+                case 3:
+                    Board[checkrow][column] = turnnum;
+                    if(turnnum == 1){
+                        turnnum = 2;
+                    }
+                    else{
+                        turnnum = 1;
+                    }
+                    //use.DeletePiece(Board);
+                    breakout = 1;
+                    break;
+                case 4:
+                    Board[checkrow][column] = turnnum;
+                    //use.takeAnotherTurn(Board);
+                    break;
+                case 5:
+                    Board[checkrow][column] = turnnum;
+                    if(turnnum == 1){
+                        turnnum = 2;
+                    }
+                    else{
+                        turnnum = 1;
+                    }
+                    //use.switchPiece(Board);
+                    breakout = 1;
+                    break;
+            }
+        }
+        
         return Board;
     }
 }
