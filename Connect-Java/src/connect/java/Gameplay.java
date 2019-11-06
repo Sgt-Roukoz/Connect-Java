@@ -54,7 +54,7 @@ public class Gameplay {
         PU_DeletePiece use = new PU_DeletePiece();
         breakout = 0;
         //Parsing through the column given bottom to top
-        for(int checkrow = 5; checkrow<0 && breakout == 0; checkrow--){
+        for(int checkrow = 5; checkrow>-1 && breakout == 0; checkrow--){
             //placing a piece or skipping over a square based on the value
             switch(Board[checkrow][column]){
                 case 0:
