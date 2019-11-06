@@ -56,6 +56,7 @@ public class GraphicsUI extends JPanel {
                     case 1:
                         g.setColor(Color.red);
                         g.fillRect((100*c), (100*r), 100, 100);
+                        g.fillOval((100*c), (100*r), 100, 100);
                         break;
                     case 2:
                         g.setColor(Color.yellow);
@@ -63,15 +64,18 @@ public class GraphicsUI extends JPanel {
                         break;
                     case 3:
                         g.setColor(Color.green);
-                        g.fillRect((100*c), (100*r), 100, 100);
+                        //g.fillRect((100*c), (100*r), 100, 100);
+                        g.fillOval((100*c + 15), (100*r + 15), 70, 70);
                         break;
                     case 4:
                         g.setColor(Color.cyan);
-                        g.fillRect((100*c), (100*r), 100, 100);
+                        //g.fillRect((100*c), (100*r), 100, 100);
+                        g.fillOval((100*c + 15), (100*r + 15), 70, 70);
                         break;
                     case 5:
                         g.setColor(Color.blue);
-                        g.fillRect((100*c), (100*r), 100, 100);
+                        //g.fillRect((100*c), (100*r), 100, 100);
+                        g.fillOval((100*c + 15), (100*r + 15), 70, 70);
                         break;
                 }
             }

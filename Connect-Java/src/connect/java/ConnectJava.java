@@ -8,6 +8,7 @@ import java.awt.Color;
 import javax.swing.JFrame;
 import java.util.concurrent.TimeUnit;
 import java.awt.*;
+import java.awt.event.*;
 
 public class ConnectJava extends JFrame{
 
@@ -15,6 +16,9 @@ public static int width = 700;
 public static int height = 600;
 public static int pointx = 90999;
 protected static int[][] Board = new int[6][7];
+static boolean mouseClicked = false;
+static boolean onColCl = false;
+static int mx, my;
 
 public static GraphicsUI gui = new GraphicsUI();
 
@@ -24,6 +28,17 @@ public static GraphicsUI gui = new GraphicsUI();
 
     private void initUI(){
         add(gui);
+        addMouseListener(new MouseListener() {
+        public void mousePressed(MouseEvent me) { }
+        public void mouseReleased(MouseEvent me) { }
+        public void mouseEntered(MouseEvent me) { }
+        public void mouseExited(MouseEvent me) { }
+        public void mouseClicked(MouseEvent me) { 
+          if(me.getButton() == MouseEvent.BUTTON1) {
+            mouseClicked = true;
+          }
+        }
+    });
         setResizable(false);
         setSize(width, height);
         pack();
@@ -37,37 +52,18 @@ public static GraphicsUI gui = new GraphicsUI();
         
         int mouse_x=MouseInfo.getPointerInfo().getLocation().x-cj.getLocationOnScreen().x;
         int mouse_y=MouseInfo.getPointerInfo().getLocation().y-cj.getLocationOnScreen().y;
-        
         if (mouse_y >= 0 && mouse_y <= height){
-            if (mouse_x >=0 && mouse_x<= 1*(width/7) + 2){
-                pointx = 0;
-            } 
-            else if (mouse_x >1*(width/7)+ 2 && mouse_x<= 2* (width/7)+ 2){
-                pointx = 1*(width/7);
-            } 
-            else if(mouse_x >2* (width/7)+ 2 && mouse_x<= 3* (width/7)+ 2){
-                pointx = 2*(width/7);
-            }
-            else if(mouse_x >3* (width/7)+ 2 && mouse_x<= 4* (width/7)+ 2){
-                pointx = 3*(width/7);
-            }
-            else if(mouse_x >4*(width/7)+ 2 && mouse_x<= 5*(width/7)+ 2){
-                pointx = 4*(width/7);
-            }
-            else if(mouse_x >5*(width/7)+ 2 && mouse_x<= 6*(width/7)+ 2){
-                pointx = 5*(width/7);
-            }
-            else if(mouse_x >6*(width/7)+ 2 && mouse_x<= 7*(width/7)+ 2){
-                pointx = 6*(width/7);
-            }
-            else if(mouse_x < 0 || mouse_x > width){
-                pointx = 90090;
+            mx = (int)Math.floor(mouse_x/100);
+            my = (int)Math.floor(mouse_y/100);
+            pointx = mx*100;
+            if (mouseClicked){
+                onColCl = true;
             }
         }
-            else {
-                pointx = 90090;
+        else {
+            pointx = 90090;
             }
-        }
+    }
     
     public static void main(String[] args) {
         ConnectJava cj = new ConnectJava();
@@ -75,7 +71,11 @@ public static GraphicsUI gui = new GraphicsUI();
         Gameplay gp = new Gameplay();
         Board = gp.Generate(Board);       
         while(true){
+            mouseClicked = false;
             checkMouseInfo(cj);
+            if (onColCl){
+                //gp.PlacePiece(mx,my,Board);
+            }
             gui.refresh(pointx, Board);
         }
     }
