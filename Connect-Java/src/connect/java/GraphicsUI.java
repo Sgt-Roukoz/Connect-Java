@@ -8,7 +8,7 @@ import java.awt.*;
 public class GraphicsUI extends JPanel {
     int height = ConnectJava.height;
     int width = ConnectJava.width;
-    int pointx = ConnectJava.pointx;
+    int pointx, pointy = 909000;
     int[][]Board = new int[6][7];
             
     @Override
@@ -37,11 +37,13 @@ public class GraphicsUI extends JPanel {
     
     public void highlight(Graphics g){ // base method for painting the board
         g.setColor(Color.gray);
+        g.fillRect(0, pointy, width, 100);
         g.fillRect(pointx, 0, 100, height);
     }
     
-    public void refresh(int point, int[][] board){
-        pointx = point;
+    public void refresh(int pointX, int pointY, int[][] board){
+        pointx = pointX;
+        pointy = pointY;
         Board = board;
         repaint();
     }

@@ -84,7 +84,7 @@ public class Gameplay {
                     else{
                         turnnum = 1;
                     }
-                    //Call DeletePiece setup method
+                    ConnectJava.deletePieceSetup();
                     //use.DeletePiece(Column, Row, Board);
                     breakout = 1;
                     break;
