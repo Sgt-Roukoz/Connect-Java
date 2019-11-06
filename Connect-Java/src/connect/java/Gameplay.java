@@ -96,7 +96,7 @@ public class Gameplay {
                     else{
                         turnnum = 1;
                     }
-                    //use.switchPiece(Board);
+                    //use.switchPiece(Column, Row, Board);
                     breakout = 1;
                     break;
             }
