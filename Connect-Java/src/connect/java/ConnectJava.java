@@ -74,7 +74,9 @@ public static GraphicsUI gui = new GraphicsUI();
             mouseClicked = false;
             checkMouseInfo(cj);
             if (onColCl){
-                //gp.PlacePiece(mx,my,Board);
+                System.out.println("H");
+                onColCl= false;
+                gp.placePiece(mx,my,Board);
             }
             gui.refresh(pointx, Board);
         }
