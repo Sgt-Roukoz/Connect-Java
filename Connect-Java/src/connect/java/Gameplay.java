@@ -90,13 +90,14 @@ public class Gameplay {
                     break;
                 case 5:
                     Board[checkrow][column] = turnnum;
+                    
+                    //use.switchPiece(Column, Row, turnnum, Board);
                     if(turnnum == 1){
                         turnnum = 2;
                     }
                     else{
                         turnnum = 1;
                     }
-                    //use.switchPiece(Column, Row, Board);
                     breakout = 1;
                     break;
             }
