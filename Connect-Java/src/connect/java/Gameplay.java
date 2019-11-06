@@ -50,7 +50,7 @@ public class Gameplay {
         return Board;
     }
     
-    public int[][] placePiece(int Column, int[][]Board){
+    public int[][] placePiece(int Column, int Row, int[][]Board){
         PU_DeletePiece use = new PU_DeletePiece();
         breakout = 0;
         //Parsing through the column given bottom to top
@@ -81,7 +81,7 @@ public class Gameplay {
                     else{
                         turnnum = 1;
                     }
-                    //use.DeletePiece(Board);
+                    //use.DeletePiece(Column, Row, Board);
                     breakout = 1;
                     break;
                 case 4:
