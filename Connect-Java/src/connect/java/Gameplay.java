@@ -53,12 +53,13 @@ public class Gameplay {
     public int[][] placePiece(int Column, int Row, int[][]Board){
         PU_DeletePiece use = new PU_DeletePiece();
         breakout = 0;
+        System.out.println(Column);
         //Parsing through the column given bottom to top
-        for(int checkrow = 5; checkrow>-1 && breakout == 0; checkrow--){
+        for(int checkrow = 5; checkrow>-1; checkrow--){
             //placing a piece or skipping over a square based on the value
-            switch(Board[checkrow][column]){
+            switch(Board[checkrow][Column]){
                 case 0:
-                    Board[checkrow][column] = turnnum;
+                    Board[checkrow][Column] = turnnum;
                     if(turnnum == 1){
                         turnnum = 2;
                     }
@@ -74,7 +75,7 @@ public class Gameplay {
                     //already filled square
                     break;
                 case 3:
-                    Board[checkrow][column] = turnnum;
+                    Board[checkrow][Column] = turnnum;
                     if(turnnum == 1){
                         turnnum = 2;
                     }
@@ -85,11 +86,11 @@ public class Gameplay {
                     breakout = 1;
                     break;
                 case 4:
-                    Board[checkrow][column] = turnnum;
-                    //use.takeAnotherTurn(Board);
+                    Board[checkrow][Column] = turnnum;
+                    breakout = 1;
                     break;
                 case 5:
-                    Board[checkrow][column] = turnnum;
+                    Board[checkrow][Column] = turnnum;
                     
                     //use.switchPiece(Column, Row, turnnum, Board);
                     if(turnnum == 1){
@@ -100,6 +101,9 @@ public class Gameplay {
                     }
                     breakout = 1;
                     break;
+            }
+            if (breakout == 1){
+                break;
             }
         }
         
