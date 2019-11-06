@@ -55,12 +55,11 @@ public class GraphicsUI extends JPanel {
                     
                     case 1:
                         g.setColor(Color.red);
-                        g.fillRect((100*c), (100*r), 100, 100);
                         g.fillOval((100*c), (100*r), 100, 100);
                         break;
                     case 2:
                         g.setColor(Color.yellow);
-                        g.fillRect((100*c), (100*r), 100, 100);
+                        g.fillOval((100*c), (100*r), 100, 100);
                         break;
                     case 3:
                         g.setColor(Color.green);
