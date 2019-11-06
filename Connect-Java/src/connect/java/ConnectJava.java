@@ -21,6 +21,7 @@ static boolean onColCl = false;
 static int mx, my;
 
 public static GraphicsUI gui = new GraphicsUI();
+public static ConnectJava cj = new ConnectJava();
 
     public ConnectJava(){
         initUI();
@@ -66,7 +67,6 @@ public static GraphicsUI gui = new GraphicsUI();
     }
     
     public static void main(String[] args) {
-        ConnectJava cj = new ConnectJava();
         cj.setVisible(true);
         Gameplay gp = new Gameplay();
         Board = gp.Generate(Board);       

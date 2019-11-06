@@ -82,7 +82,9 @@ public class Gameplay {
                     else{
                         turnnum = 1;
                     }
-                    //use.DeletePiece(Column, Row, Board);
+                    ConnectJava.checkMouseInfo(ConnectJava.cj);
+                    //while true for mouse values
+                    use.DeletePiece(Column, Row, Board);
                     breakout = 1;
                     break;
                 case 4:
