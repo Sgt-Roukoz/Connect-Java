@@ -50,18 +50,23 @@ public class ConnectJava extends JFrame{
         setLocationRelativeTo(null);
     }
     
-    public static void deletePieceSetup(){ // setup parameters for delete piece powerup
+    public static void powerUpSetup(int PU){ // setup parameters for delete piece powerup
         onColCl = false;
         pause();
+        
         while(true){
             mouseClicked = false;
             checkMouseInfo(cj, 1);
             
             gui.refresh(pointx, pointy, Board);
             
-            if (onColCl){
+            if (onColCl && PU == 1){
                 onColCl = false;
                 pudp.DeletePiece(mx,my,Board);
+                break;
+            } else if (onColCl && PU == 0){
+                onColCl = false;
+                pudp.switchPiece(mx,my,Board);
                 break;
             }
         }
