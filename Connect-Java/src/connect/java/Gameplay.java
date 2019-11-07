@@ -84,7 +84,7 @@ public class Gameplay {
                     else{
                         turnnum = 1;
                     }
-                    ConnectJava.deletePieceSetup();
+                    ConnectJava.powerUpSetup(1);
                     breakout = 1;
                     break;
                 case 4:
@@ -93,8 +93,7 @@ public class Gameplay {
                     break;
                 case 5:
                     Board[checkrow][Column] = turnnum;
-                    //Call switch piece setup method
-                    //use.switchPiece(Column, Row, turnnum, Board);
+                    ConnectJava.powerUpSetup(0);
                     if(turnnum == 1){
                         turnnum = 2;
                     }
@@ -242,5 +241,6 @@ public class Gameplay {
                 }  
             }
         }
+        
     }
 }
