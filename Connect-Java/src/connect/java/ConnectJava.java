@@ -2,11 +2,7 @@
 
 package connect.java;
 
-import java.awt.Canvas;
-import java.awt.Graphics;
-import java.awt.Color;
 import javax.swing.JFrame;
-import java.util.concurrent.TimeUnit;
 import java.awt.*;
 import java.awt.event.*;
 
