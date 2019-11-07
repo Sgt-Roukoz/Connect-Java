@@ -18,6 +18,7 @@ public class Gameplay {
     private int breakout;
     private static int counter1 = 0;
     private static int counter2 = 0;
+    private static int drawcounter = 0;
     /*
     Empty squares have value 0
     Squares with red pieces have value 1
@@ -111,6 +112,7 @@ public class Gameplay {
         for(int checkRow = 0; checkRow < 6; checkRow++){
             counter1 = 0;
             counter2 = 0;
+            drawcounter = 0;
             for(int checkColumn = 0; checkColumn < 7; checkColumn++){
                 if (Board[checkRow][checkColumn] == 1){
                     counter1++;
@@ -237,6 +239,22 @@ public class Gameplay {
                     //do nothing
                 }  
             }
+        }
+        for(int checkdraw = 0; checkdraw<6; checkdraw++){
+            for(int checkd = 0; checkd<7; checkd++){
+                if (Board[checkdraw][checkd] == 1 || Board[checkdraw][checkd] == 2){
+                    drawcounter++;
+                }
+                else{
+                    drawcounter = 0;
+                }
+            }
+        }
+        if(drawcounter >=42){
+            System.out.println("Draw!");
+        }
+        else{
+        //do nothing
         }
     }
 }
