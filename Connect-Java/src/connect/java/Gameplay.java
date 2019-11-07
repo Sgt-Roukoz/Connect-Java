@@ -44,8 +44,6 @@ public class Gameplay {
                     break;
                 }
             }
-            System.out.println("Row:"+row);
-            System.out.println("column"+column);
             Powerup = rand.nextInt(3);
             Board[row][column] = (Powerup+3);
         }
@@ -55,7 +53,6 @@ public class Gameplay {
     public int[][] placePiece(int Column, int Row, int[][]Board){
         PU_DeletePiece use = new PU_DeletePiece();
         breakout = 0;
-        System.out.println(Column);
         //Parsing through the column given bottom to top
         for(int checkrow = 5; checkrow>-1; checkrow--){
             //placing a piece or skipping over a square based on the value
@@ -241,6 +238,5 @@ public class Gameplay {
                 }  
             }
         }
-        
     }
 }
