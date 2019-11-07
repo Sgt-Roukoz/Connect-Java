@@ -38,8 +38,19 @@ public class PU_DeletePiece extends PowerUps{
            
         }        
     }
-    public void switchPiece(int click_y, int click_x, int Turn, int[][] Board){
+    public void switchPiece(int click_y, int click_x, int[][] Board){
         System.out.println("You can switch one of your opponent's pieces for your own!");
-        //more stuff here 
-    }
-}
+        if (Board[click_x][click_y] == 0 || Board[click_x][click_y] == 3 || Board[click_x][click_y] == 4 || Board[click_x][click_y] == 5) {
+            System.out.println("You cannot pick a powerup to switch");
+        }
+        else if(Board[click_x][click_y] == 1){
+            Board[click_x][click_y] = 2;
+        }else{
+            Board[click_x][click_y] = 1;
+        }
+           
+            }
+           
+        }        
+    
+
