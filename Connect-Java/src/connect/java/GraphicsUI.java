@@ -53,6 +53,7 @@ public class GraphicsUI extends JPanel {
         int c;
         for(int r = 0; r < 6; r++){
             for(c = 0; c < 7; c++){
+                
                 switch(Board[r][c]){
                     
                     case 1:
@@ -65,18 +66,22 @@ public class GraphicsUI extends JPanel {
                         break;
                     case 3:
                         g.setColor(Color.green);
-                        //g.fillRect((100*c), (100*r), 100, 100);
                         g.fillOval((100*c + 15), (100*r + 15), 70, 70);
+                        g.setColor(Color.BLACK);
+                        g.drawString("Del Piece",(100*c + 25) , (100*r + 50));
                         break;
                     case 4:
                         g.setColor(Color.cyan);
-                        //g.fillRect((100*c), (100*r), 100, 100);
                         g.fillOval((100*c + 15), (100*r + 15), 70, 70);
+                        g.setColor(Color.BLACK);
+                        g.drawString("+1 Turn",(100*c + 30) , (100*r + 50));
                         break;
                     case 5:
-                        g.setColor(Color.blue);
-                        //g.fillRect((100*c), (100*r), 100, 100);
+                        g.setColor(Color.ORANGE);
                         g.fillOval((100*c + 15), (100*r + 15), 70, 70);
+                        g.setColor(Color.BLACK);
+                        g.drawString("Switch",(100*c + 33) , (100*r + 45));
+                        g.drawString("Piece",(100*c + 35) , (100*r + 60));
                         break;
                 }
             }
