@@ -10,14 +10,14 @@ import java.util.Random;
  * @author S347096083
  */
 public class Gameplay {
-    //protected int[][] Board = new int[6][7];
     private int row = 0;
     private int column = 0;
     private int Powerup = 0;
-    private int turnnum = 1;
+    public static int turnnum = 1;
     private int breakout;
     private static int counter1 = 0;
     private static int counter2 = 0;
+    public static UtilityWindow show = new UtilityWindow();
     /*
     Empty squares have value 0
     Squares with red pieces have value 1
@@ -25,6 +25,7 @@ public class Gameplay {
     Squares with powerups have value 3/4/5
     */
     public int[][] Generate(int[][]Board){//Generating board values
+        show.setVisible(true);
         Random rand = new Random();
         //Setting all sqaures to empty
         for(int ro = 0; ro < 6; ro++){
@@ -74,6 +75,8 @@ public class Gameplay {
                     //already filled square
                     break;
                 case 3:
+                    int whichpowerup = 3;
+                    show.pwrup(whichpowerup);
                     Board[checkrow][Column] = turnnum;
                     if(turnnum == 1){
                         turnnum = 2;
@@ -85,12 +88,17 @@ public class Gameplay {
                     breakout = 1;
                     break;
                 case 4:
+                    whichpowerup = 4;
+                    show.pwrup(whichpowerup);
                     Board[checkrow][Column] = turnnum;
+                    PU_DeletePiece.pup = 0;
                     breakout = 1;
                     break;
                 case 5:
+                    whichpowerup = 5;
                     Board[checkrow][Column] = turnnum;
                     ConnectJava.powerUpSetup(0);
+                    show.pwrup(whichpowerup);
                     if(turnnum == 1){
                         turnnum = 2;
                     }
@@ -105,6 +113,7 @@ public class Gameplay {
             }
         }
         checkWin(Board);
+        show.info(turnnum);
         return Board;
     }
     public static void checkWin(int[][]Board){
