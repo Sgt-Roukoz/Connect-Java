@@ -10,11 +10,10 @@ import java.util.Random;
  * @author S347096083
  */
 public class Gameplay {
-    //protected int[][] Board = new int[6][7];
     private int row = 0;
     private int column = 0;
     private int Powerup = 0;
-    private int turnnum = 1;
+    public static int turnnum = 1;
     private int breakout;
     private static int counter1 = 0;
     private static int counter2 = 0;
@@ -85,11 +84,11 @@ public class Gameplay {
                     ConnectJava.powerUpSetup(1);
                     breakout = 1;
                     break;
-                case 4:
+                case 4:             
                     Board[checkrow][Column] = turnnum;
                     breakout = 1;
                     break;
-                case 5:
+                case 5:                   
                     Board[checkrow][Column] = turnnum;
                     ConnectJava.powerUpSetup(0);
                     if(turnnum == 1){

@@ -16,11 +16,18 @@ public class PU_DeletePiece extends PowerUps{
     
     public void DeletePiece(int click_y, int click_x, int[][] Board){
         System.out.println("You can delete one of your opponent's pieces!");
-        click_x--;
         if (Board[click_x][click_y] == 0 || Board[click_x][click_y] == 3 || Board[click_x][click_y] == 4 || Board[click_x][click_y] == 5) {
-            System.out.println("You cannot pick a powerup to vanish");
+            System.out.println("You cannot pick a powerup/empty square to delete");
+            ConnectJava.powerUpSetup(1);
+        }
+        else if(click_x == 0){
+            Board[click_x][click_y] = 0;
+        }
+        else if(Board[click_x-1][click_y]==0 || Board[click_x-1][click_y] == 3 || Board[click_x-1][click_y] == 4 || Board[click_x-1][click_y] == 5){
+            Board[click_x][click_y] = 0;
         }
         else{
+           click_x--;
            for(int somevar = click_x; somevar > -1; somevar--){
                 switch(Board[somevar][click_y]){
                     case 0:
@@ -41,7 +48,8 @@ public class PU_DeletePiece extends PowerUps{
     public void switchPiece(int click_y, int click_x, int[][] Board){
         System.out.println("You can switch one of your opponent's pieces for your own!");
         if (Board[click_x][click_y] == 0 || Board[click_x][click_y] == 3 || Board[click_x][click_y] == 4 || Board[click_x][click_y] == 5) {
-            System.out.println("You cannot pick a powerup to switch");
+            System.out.println("You cannot pick a powerup/empty square to switch");
+            ConnectJava.powerUpSetup(0);
         }
         else if(Board[click_x][click_y] == 1){
             Board[click_x][click_y] = 2;

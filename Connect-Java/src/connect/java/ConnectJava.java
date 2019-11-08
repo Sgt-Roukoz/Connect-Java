@@ -80,7 +80,7 @@ public class ConnectJava extends JFrame{
         int mouse_x=MouseInfo.getPointerInfo().getLocation().x-cj.getLocationOnScreen().x;
         int mouse_y=MouseInfo.getPointerInfo().getLocation().y-cj.getLocationOnScreen().y;
         
-        if (mouse_y >= 0 && mouse_y <= height){
+        if (mouse_y >= 0 && mouse_y <= height+32){
             mx = (int)Math.floor(mouse_x/100);
             my = (int)Math.floor((mouse_y - 32)/100); // reduced by 32 to accomodate for the window bar
             pointx = mx*100;
