@@ -17,7 +17,10 @@ public class Gameplay {
     private int breakout;
     private static int counter1 = 0;
     private static int counter2 = 0;
+    public static int whichpowerup = 0;
+    public static int winner = 0;
     public static UtilityWindow show = new UtilityWindow();
+    public UtilityWindow util = new UtilityWindow();
     /*
     Empty squares have value 0
     Squares with red pieces have value 1
@@ -75,8 +78,8 @@ public class Gameplay {
                     //already filled square
                     break;
                 case 3:
-                    int whichpowerup = 3;
-                    show.pwrup(whichpowerup);
+                    whichpowerup = 3;
+                    show.pwrup();
                     Board[checkrow][Column] = turnnum;
                     if(turnnum == 1){
                         turnnum = 2;
@@ -89,7 +92,7 @@ public class Gameplay {
                     break;
                 case 4:
                     whichpowerup = 4;
-                    show.pwrup(whichpowerup);
+                    show.pwrup();
                     Board[checkrow][Column] = turnnum;
                     PU_DeletePiece.pup = 0;
                     breakout = 1;
@@ -98,7 +101,7 @@ public class Gameplay {
                     whichpowerup = 5;
                     Board[checkrow][Column] = turnnum;
                     ConnectJava.powerUpSetup(0);
-                    show.pwrup(whichpowerup);
+                    show.pwrup();
                     if(turnnum == 1){
                         turnnum = 2;
                     }
@@ -116,6 +119,7 @@ public class Gameplay {
         show.info(turnnum);
         return Board;
     }
+
     public static void checkWin(int[][]Board){
         for(int checkRow = 0; checkRow < 6; checkRow++){
             counter1 = 0;
@@ -135,11 +139,13 @@ public class Gameplay {
                 }
                 if (counter1>=4){
                     //This is a placeholder for what will actually happen should someone win
+                    winner = 1;
                     System.out.println("Red wins!");
                     return;//stops method execution
                 }
                 else if (counter2>=4){
                     //This is a placeholder for what will actually happen should someone win
+                    winner = 2;
                     System.out.println("Yellow wins!");
                     return;
                 }   
@@ -148,6 +154,7 @@ public class Gameplay {
                 }
             }
         }
+
         for(int checkColumn2 = 0; checkColumn2 < 7; checkColumn2++){
             counter1 = 0;
             counter2 = 0;
