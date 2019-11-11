@@ -10,7 +10,7 @@ package connect.java;
  * @author S332783570
  */
 public class UtilityWindow extends javax.swing.JFrame {
-
+public Gameplay bleh = new Gameplay(); 
     /**
      * Creates new form UtilityWindow
      */
@@ -123,13 +123,6 @@ public class UtilityWindow extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2))
-                    .addComponent(jLabel3)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5)
                     .addComponent(jLabel6)
@@ -145,7 +138,16 @@ public class UtilityWindow extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton1)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2)))
+                        .addComponent(jButton2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2)))
                 .addGap(0, 65, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -201,10 +203,12 @@ public class UtilityWindow extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        ConnectJava.Game();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        System.exit(0);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
@@ -213,10 +217,50 @@ public class UtilityWindow extends javax.swing.JFrame {
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
+        
+        //if(pup == 3){
+        //}
     }//GEN-LAST:event_jTextField2ActionPerformed
-
+    
+    public void info(int turnnum){
+        if(turnnum == 1){
+            jTextField1.setText("red");
+        }else{
+            jTextField1.setText("yellow");
+        }
+    }
+    
+    public void pwrup(){
+        int disp = Gameplay.whichpowerup;
+        switch (disp){
+            case 3:
+                jTextField2.setText("You can place another piece!");
+                break;
+            case 4:
+                jTextField2.setText("You can delete a piece!");
+                break;
+            case 5:
+                jTextField2.setText("You can switch a piece for another!");
+                break;
+        }
+        
+    }
+    public void ender(){
+        int gagnant = Gameplay.winner;
+        switch(gagnant){
+            case 1:
+                jTextField3.setText("Red wins");
+                break;
+            case 2:
+                jTextField3.setText("Yellow wins");
+                break;
+                
+        }
+    }
+    
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
@@ -253,7 +297,7 @@ public class UtilityWindow extends javax.swing.JFrame {
             }
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

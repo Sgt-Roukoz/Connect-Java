@@ -75,7 +75,7 @@ public class Gameplay {
                     //already filled square
                     break;
                 case 2:
-                    //already filled square
+                    //already filled squar
                     break;
                 case 3:
                     whichpowerup = 3;
@@ -94,7 +94,6 @@ public class Gameplay {
                     whichpowerup = 4;
                     show.pwrup();
                     Board[checkrow][Column] = turnnum;
-                    PU_DeletePiece.pup = 0;
                     breakout = 1;
                     break;
                 case 5:

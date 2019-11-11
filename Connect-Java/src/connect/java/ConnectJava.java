@@ -23,6 +23,7 @@ public class ConnectJava extends JFrame{
     public static GraphicsUI gui = new GraphicsUI();
     public static ConnectJava cj = new ConnectJava();
     static PU_DeletePiece pudp = new PU_DeletePiece();
+    
 
     public ConnectJava(){
         initUI();
@@ -106,7 +107,12 @@ public class ConnectJava extends JFrame{
     }
     
     public static void main(String[] args) {
-        cj.setVisible(true);
+        Game();
+    }
+    
+    
+    public static void Game(){
+    cj.setVisible(true);
         Gameplay gp = new Gameplay();
         Board = gp.Generate(Board);       
         while(true){
@@ -120,4 +126,5 @@ public class ConnectJava extends JFrame{
             gui.refresh(pointx, pointy, Board);
         }
     }
+    
 }

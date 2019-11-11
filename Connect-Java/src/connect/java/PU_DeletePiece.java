@@ -5,8 +5,6 @@
  */
 package connect.java;
 
-import java.awt.MouseInfo;
-
 /**
  *
  * @author S347096083
@@ -34,7 +32,6 @@ public class PU_DeletePiece extends PowerUps{
                         continue;
                 }
             }
-           
         }        
     }
     public void switchPiece(int click_y, int click_x, int[][] Board){
@@ -47,9 +44,7 @@ public class PU_DeletePiece extends PowerUps{
         }else{
             Board[click_x][click_y] = 1;
         }
-           
-            }
-           
+            }   
         }        
     
 

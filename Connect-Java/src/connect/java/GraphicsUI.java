@@ -19,7 +19,7 @@ public class GraphicsUI extends JPanel {
         drawLines(g);
     }
     
-    public void drawLines(Graphics g){ // Create Basic Board
+    public void drawLines(Graphics g){ //Create Basic Board
         int ypos = 0;
         int xpos = 0;
         
