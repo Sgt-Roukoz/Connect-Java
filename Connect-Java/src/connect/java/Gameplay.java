@@ -21,6 +21,7 @@ public class Gameplay {
     public static int winner = 0;
     public static UtilityWindow show = new UtilityWindow();
     public UtilityWindow util = new UtilityWindow();
+    private static int drawcounter = 0;
     /*
     Empty squares have value 0
     Squares with red pieces have value 1
@@ -90,14 +91,14 @@ public class Gameplay {
                     ConnectJava.powerUpSetup(1);
                     breakout = 1;
                     break;
-                case 4:
+                case 4:             
                     whichpowerup = 4;
                     show.pwrup();
                     Board[checkrow][Column] = turnnum;
                     PU_DeletePiece.pup = 0;
                     breakout = 1;
                     break;
-                case 5:
+                case 5:                   
                     whichpowerup = 5;
                     Board[checkrow][Column] = turnnum;
                     ConnectJava.powerUpSetup(0);
@@ -124,6 +125,7 @@ public class Gameplay {
         for(int checkRow = 0; checkRow < 6; checkRow++){
             counter1 = 0;
             counter2 = 0;
+            drawcounter = 0;
             for(int checkColumn = 0; checkColumn < 7; checkColumn++){
                 if (Board[checkRow][checkColumn] == 1){
                     counter1++;
@@ -253,6 +255,22 @@ public class Gameplay {
                     //do nothing
                 }  
             }
+        }
+        for(int checkdraw = 0; checkdraw<6; checkdraw++){
+            for(int checkd = 0; checkd<7; checkd++){
+                if (Board[checkdraw][checkd] == 1 || Board[checkdraw][checkd] == 2){
+                    drawcounter++;
+                }
+                else{
+                    drawcounter = 0;
+                }
+            }
+        }
+        if(drawcounter >=42){
+            System.out.println("Draw!");
+        }
+        else{
+        //do nothing
         }
     }
 }
