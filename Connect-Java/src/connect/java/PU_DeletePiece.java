@@ -13,7 +13,6 @@ import java.awt.MouseInfo;
  */
 public class PU_DeletePiece extends PowerUps{
     int[][] Board; 
-    
     public void DeletePiece(int click_y, int click_x, int[][] Board){
         System.out.println("You can delete one of your opponent's pieces!");
         if (Board[click_x][click_y] == 0 || Board[click_x][click_y] == 3 || Board[click_x][click_y] == 4 || Board[click_x][click_y] == 5) {

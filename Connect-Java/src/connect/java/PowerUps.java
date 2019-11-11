@@ -9,6 +9,7 @@ package connect.java;
  *
  * @author S347096083
  */
-public class PowerUps {
+abstract class PowerUps {
+    
     
 }
