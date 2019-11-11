@@ -10,7 +10,7 @@ package connect.java;
  * @author S332783570
  */
 public class UtilityWindow extends javax.swing.JFrame {
-public Gameplay bleh = new Gameplay(); 
+
     /**
      * Creates new form UtilityWindow
      */
@@ -246,13 +246,14 @@ public Gameplay bleh = new Gameplay();
         
     }
     public void ender(){
-        int gagnant = Gameplay.winner;
-        switch(gagnant){
+        switch(Gameplay.winner){
             case 1:
                 jTextField3.setText("Red wins");
+                Gameplay.winner = 1;
                 break;
             case 2:
                 jTextField3.setText("Yellow wins");
+                Gameplay.winner = 2;
                 break;
                 
         }
