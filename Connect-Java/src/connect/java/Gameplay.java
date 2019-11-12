@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package connect.java;
 import java.util.Random;
 /**
@@ -22,12 +17,17 @@ public class Gameplay {
     public static UtilityWindow show = new UtilityWindow();
     public UtilityWindow util = new UtilityWindow();
     private static int drawcounter = 0;
+    GraphicsUI gui;
     /*
     Empty squares have value 0
     Squares with red pieces have value 1
     Squares with yellow pieces have value 2
     Squares with powerups have value 3/4/5
     */
+    public Gameplay(GraphicsUI gu){
+        gui = gu;
+    }
+    
     public int[][] Generate(int[][]Board){//Generating board values
         show.setVisible(true);
         Random rand = new Random();
@@ -36,7 +36,8 @@ public class Gameplay {
             for(int co = 0; co < 7; co++){
                 Board[ro][co]=0;
             }
-        } 
+        }
+        
         //Setting 5 random squares(no overlap) to random powerups
         for(int numpowerups = 0; numpowerups<5;numpowerups++){
             while(true){
@@ -65,7 +66,8 @@ public class Gameplay {
             //placing a piece or skipping over a square based on the value
             switch(Board[checkrow][Column]){
                 case 0:
-                    Board[checkrow][Column] = turnnum;
+                    gui.startAnimate(Column, checkrow, turnnum);
+                    //Board[checkrow][Column] = turnnum;
                     if(turnnum == 1){
                         turnnum = 2;
                     }
@@ -83,7 +85,7 @@ public class Gameplay {
                 case 3:
                     whichpowerup = 3;
                     show.pwrup();
-                    Board[checkrow][Column] = turnnum;
+                    gui.startAnimate(Column, checkrow, turnnum);
                     if(turnnum == 1){
                         turnnum = 2;
                     }
@@ -96,14 +98,14 @@ public class Gameplay {
                 case 4:             
                     whichpowerup = 4;
                     show.pwrup();
-                    Board[checkrow][Column] = turnnum;
+                    gui.startAnimate(Column, checkrow, turnnum);
                     //PU_DeletePiece.pup = 0;
                     breakout = 1;
                     break;
                 case 5:                   
                     whichpowerup = 5;
                     show.pwrup();
-                    Board[checkrow][Column] = turnnum;
+                    gui.startAnimate(Column, checkrow, turnnum);
                     ConnectJava.powerUpSetup(0);
                     if(turnnum == 1){
                         turnnum = 2;

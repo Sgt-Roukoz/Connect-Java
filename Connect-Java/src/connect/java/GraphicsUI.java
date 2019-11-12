@@ -7,13 +7,18 @@ public class GraphicsUI extends JPanel {
     int height = ConnectJava.height;
     int width = ConnectJava.width;
     int pointx, pointy = 909000;
+    int pieceX, pieceY, placePiece, color = 0;
     int[][]Board = new int[6][7];
+    public Boolean animating = false;
             
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         highlight(g);
         drawBoard(g);
+        if (animating){
+            pieceAnimate(g, color);
+        } 
         drawLines(g);
     }
     
@@ -39,20 +44,54 @@ public class GraphicsUI extends JPanel {
         g.fillRect(pointx, 0, 100, height);
     }
     
-    public void refresh(int pointX, int pointY, int[][] board){
+    public void startAnimate(int x, int y, int piece){ // setting up data for animation
+        pieceX = x*100;
+        pieceY = y*100;
+        color = piece;
+        animating = true;
+        placePiece = 0;
+        repaint();
+    }
+    
+    public void pieceAnimate(Graphics g, int col){ // animating piece drop
+        
+        if (placePiece >= pieceY){
+            ConnectJava.Board[(pieceY/100)][(pieceX/100)] = color;
+            animating = false;
+        }
+        
+        System.out.println(placePiece);
+        pause(5);
+        placePiece += 25;
+          if (col == 1){g.setColor(Color.red);}
+          else if (col == 2){g.setColor(Color.yellow);}
+            
+        g.fillOval(pieceX, placePiece, 100, 100);
+        repaint();
+        
+    }
+    
+    public void refresh(int pointX, int pointY, int[][] board){ // repaints whole board
         pointx = pointX;
         pointy = pointY;
         Board = board;
         repaint();
     }
     
+    public static void pause(int time){ // create short delay for certain actions
+        try{
+            Thread.sleep(time);
+        }catch(InterruptedException e){
+            //do nothing
+        }
+    }
     
     public void drawBoard(Graphics g){
         int c;
         for(int r = 0; r < 6; r++){
-            for(c = 0; c < 7; c++){
+            for(c = 0; c < 7; c++){ // drawing board based on array values
                 
-                switch(Board[r][c]){
+                switch(ConnectJava.Board[r][c]){
                     
                     case 1:
                         g.setColor(Color.red);
@@ -90,5 +129,3 @@ public class GraphicsUI extends JPanel {
         setPreferredSize(new Dimension(width, height));
     }
 }
-
-

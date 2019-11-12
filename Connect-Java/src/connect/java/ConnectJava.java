@@ -26,7 +26,7 @@ public class ConnectJava extends JFrame{
         initUI();
     }
 
-    private void initUI(){
+    private void initUI(){ // initializing JFrame
         add(gui);
         addMouseListener(new MouseListener() {
         public void mousePressed(MouseEvent me) { }
@@ -77,7 +77,8 @@ public class ConnectJava extends JFrame{
             //do nothing
         }
     }
-    public static void checkMouseInfo(ConnectJava cj, int puNum){
+    
+    public static void checkMouseInfo(ConnectJava cj, int puNum){ // checking mouse information and calling highlights
         int mouse_x=MouseInfo.getPointerInfo().getLocation().x-cj.getLocationOnScreen().x;
         int mouse_y=MouseInfo.getPointerInfo().getLocation().y-cj.getLocationOnScreen().y;
         if (mouse_y >= 0 && mouse_y <= height+32){
@@ -102,23 +103,20 @@ public class ConnectJava extends JFrame{
     }
     
     public static void main(String[] args) {
-            Game();
+        gp = new Gameplay(gui);
+        Game();
     }
     
     
-    public static void Game(){
-        gp = new Gameplay();
+    public static void Game(){ // main game method (loop)
         cj.setVisible(true);
         Board = gp.Generate(Board);
-        gui.refresh(pointx, pointy, Board);
-        System.out.println("I started again");
         
         while(Gameplay.winner == 0){
             mouseClicked = false;
             checkMouseInfo(cj, 0);
            
             if (onColCl){
-                System.out.println("I clicked inside");
                 onColCl= false;
                 gp.placePiece(mx,my,Board);
             }
