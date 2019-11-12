@@ -203,7 +203,8 @@ public class UtilityWindow extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        ConnectJava.Game();
+        //ConnectJava.cj.Game();
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -231,13 +232,14 @@ public class UtilityWindow extends javax.swing.JFrame {
     }
     
     public void pwrup(){
+        jTextField2.setText("");
         int disp = Gameplay.whichpowerup;
         switch (disp){
             case 3:
-                jTextField2.setText("You can place another piece!");
+                jTextField2.setText("You can delete a piece!");
                 break;
             case 4:
-                jTextField2.setText("You can delete a piece!");
+                jTextField2.setText("You can place another piece!");
                 break;
             case 5:
                 jTextField2.setText("You can switch a piece for another!");
@@ -249,13 +251,13 @@ public class UtilityWindow extends javax.swing.JFrame {
         switch(Gameplay.winner){
             case 1:
                 jTextField3.setText("Red wins");
-                Gameplay.winner = 1;
                 break;
             case 2:
                 jTextField3.setText("Yellow wins");
-                Gameplay.winner = 2;
                 break;
-                
+            case 3:
+                jTextField3.setText("It's a draw.");
+                break;                
         }
     }
     

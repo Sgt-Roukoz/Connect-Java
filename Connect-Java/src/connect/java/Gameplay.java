@@ -36,7 +36,7 @@ public class Gameplay {
             for(int co = 0; co < 7; co++){
                 Board[ro][co]=0;
             }
-        }
+        } 
         //Setting 5 random squares(no overlap) to random powerups
         for(int numpowerups = 0; numpowerups<5;numpowerups++){
             while(true){
@@ -58,6 +58,8 @@ public class Gameplay {
     public int[][] placePiece(int Column, int Row, int[][]Board){
         PU_DeletePiece use = new PU_DeletePiece();
         breakout = 0;
+        whichpowerup = 0;
+        show.pwrup();
         //Parsing through the column given bottom to top
         for(int checkrow = 5; checkrow>-1; checkrow--){
             //placing a piece or skipping over a square based on the value
@@ -100,9 +102,9 @@ public class Gameplay {
                     break;
                 case 5:                   
                     whichpowerup = 5;
+                    show.pwrup();
                     Board[checkrow][Column] = turnnum;
                     ConnectJava.powerUpSetup(0);
-                    show.pwrup();
                     if(turnnum == 1){
                         turnnum = 2;
                     }
@@ -122,6 +124,7 @@ public class Gameplay {
     }
 
     public static void checkWin(int[][]Board){
+        winner = 0;
         for(int checkRow = 0; checkRow < 6; checkRow++){
             counter1 = 0;
             counter2 = 0;
@@ -142,13 +145,13 @@ public class Gameplay {
                 if (counter1>=4){
                     //This is a placeholder for what will actually happen should someone win
                     winner = 1;
-                    System.out.println("Red wins!");
+                    show.ender();
                     return;//stops method execution
                 }
                 else if (counter2>=4){
                     //This is a placeholder for what will actually happen should someone win
                     winner = 2;
-                    System.out.println("Yellow wins!");
+                    show.ender();
                     return;
                 }   
                 else{
@@ -175,12 +178,12 @@ public class Gameplay {
                 }
                 if (counter1>=4){
                     //This is a placeholder for what will actually happen should someone win
-                    System.out.println("Red wins!");
+                    show.ender();
                     return;
                 }
                 else if (counter2>=4){
                     //This is a placeholder for what will actually happen should someone win
-                    System.out.println("Yellow wins!");
+                   show.ender();
                     return;
                 }   
                 else{
@@ -209,12 +212,12 @@ public class Gameplay {
                 }
                 if (counter1>=4){
                     //This is a placeholder for what will actually happen should someone win
-                    System.out.println("Red wins!");
+                    show.ender();
                     return;
                 }
                 else if (counter2>=4){
                     //This is a placeholder for what will actually happen should someone win
-                    System.out.println("Yellow wins!");
+                    show.ender();
                     return;
                 }   
                 else{
@@ -243,12 +246,12 @@ public class Gameplay {
                 }
                 if (counter1>=4){
                     //This is a placeholder for what will actually happen should someone win
-                    System.out.println("Red wins!");
+                    show.ender();
                     return;
                 }
                 else if (counter2>=4){
                     //This is a placeholder for what will actually happen should someone win
-                    System.out.println("Yellow wins!");
+                    show.ender();
                     return;
                 }   
                 else{
@@ -268,6 +271,7 @@ public class Gameplay {
         }
         if(drawcounter >=42){
             System.out.println("Draw!");
+            winner = 3;
         }
         else{
         //do nothing

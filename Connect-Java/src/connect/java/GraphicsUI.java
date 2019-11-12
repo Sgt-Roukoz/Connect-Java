@@ -20,7 +20,7 @@ public class GraphicsUI extends JPanel {
     public void drawLines(Graphics g){ //Create Basic Board
         int ypos = 0;
         int xpos = 0;
-        
+    
         g.setColor(Color.black); 
         while (ypos <= height){
         g.drawLine(0, ypos, width, ypos);

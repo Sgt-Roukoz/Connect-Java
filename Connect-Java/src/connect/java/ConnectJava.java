@@ -15,6 +15,7 @@ public class ConnectJava extends JFrame{
     static boolean mouseClicked = false;
     static boolean onColCl = false;
     static int mx, my;
+    public static Gameplay gp;
 
     public static GraphicsUI gui = new GraphicsUI();
     public static ConnectJava cj = new ConnectJava();
@@ -77,10 +78,8 @@ public class ConnectJava extends JFrame{
         }
     }
     public static void checkMouseInfo(ConnectJava cj, int puNum){
-        
         int mouse_x=MouseInfo.getPointerInfo().getLocation().x-cj.getLocationOnScreen().x;
         int mouse_y=MouseInfo.getPointerInfo().getLocation().y-cj.getLocationOnScreen().y;
-        
         if (mouse_y >= 0 && mouse_y <= height+32){
             mx = (int)Math.floor(mouse_x/100);
             my = (int)Math.floor((mouse_y - 32)/100); // reduced by 32 to accomodate for the window bar
@@ -103,24 +102,28 @@ public class ConnectJava extends JFrame{
     }
     
     public static void main(String[] args) {
-        Game();
+            Game();
     }
     
     
     public static void Game(){
-    cj.setVisible(true);
-        Gameplay gp = new Gameplay();
-        Board = gp.Generate(Board);       
+        gp = new Gameplay();
+        cj.setVisible(true);
+        Board = gp.Generate(Board);
+        gui.refresh(pointx, pointy, Board);
+        System.out.println("I started again");
+        
         while(Gameplay.winner == 0){
             mouseClicked = false;
             checkMouseInfo(cj, 0);
            
             if (onColCl){
+                System.out.println("I clicked inside");
                 onColCl= false;
                 gp.placePiece(mx,my,Board);
             }
             gui.refresh(pointx, pointy, Board);
         }
-    }
+        }
     
 }
