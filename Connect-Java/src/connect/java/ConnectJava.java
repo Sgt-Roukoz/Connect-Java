@@ -51,7 +51,6 @@ public class ConnectJava extends JFrame{
     public static void powerUpSetup(int PU){ // setup parameters for delete piece powerup
         onColCl = false;
         pause(100);
-        
         while(true){
             mouseClicked = false;
             checkMouseInfo(cj, 1);

@@ -127,10 +127,12 @@ public class Gameplay {
 
     public static void checkWin(int[][]Board){
         winner = 0;
+        //checking the top 3 rows for all except horizontal winning
         for(int checkRow = 0; checkRow < 6; checkRow++){
             counter1 = 0;
             counter2 = 0;
             drawcounter = 0;
+            //checking downward from every square in the top 3 rows, repeated for following for loops
             for(int checkColumn = 0; checkColumn < 7; checkColumn++){
                 if (Board[checkRow][checkColumn] == 1){
                     counter1++;
@@ -144,6 +146,7 @@ public class Gameplay {
                 else{
                     counter2 = 0;
                 }
+                //stopping if a line is 4 in length
                 if (counter1>=4){
                     winner = 1;
                     show.ender(winner);
@@ -259,6 +262,7 @@ public class Gameplay {
                 }  
             }
         }
+        //checking to see if the board is full after no winners have been found
         for(int checkdraw = 0; checkdraw<6; checkdraw++){
             for(int checkd = 0; checkd<7; checkd++){
                 if (Board[checkdraw][checkd] == 1 || Board[checkdraw][checkd] == 2){
