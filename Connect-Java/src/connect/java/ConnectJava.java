@@ -2,27 +2,43 @@
 
 package connect.java;
 
-import java.awt.Canvas;
-import java.awt.Graphics;
-import java.awt.Color;
 import javax.swing.JFrame;
-import java.util.concurrent.TimeUnit;
 import java.awt.*;
+import java.awt.event.*;
 
 public class ConnectJava extends JFrame{
 
-public static int width = 700;
-public static int height = 600;
-public static int pointx = 90999;
+    public static int width = 700;
+    public static int height = 600;
+    public static int pointx, pointy = 90999;
+    protected static int[][] Board = new int[6][7];
+    static boolean mouseClicked = false;
+    static boolean onColCl = false;
+    static int mx, my;
+    public static Gameplay gp;
 
-public static GraphicsUI gui = new GraphicsUI();
+    public static GraphicsUI gui = new GraphicsUI();
+    public static ConnectJava cj = new ConnectJava();
+    static PU_DeletePiece pudp = new PU_DeletePiece();
+    
 
     public ConnectJava(){
         initUI();
     }
 
-    private void initUI(){
+    private void initUI(){ // initializing JFrame
         add(gui);
+        addMouseListener(new MouseListener() {
+        public void mousePressed(MouseEvent me) { }
+        public void mouseReleased(MouseEvent me) { }
+        public void mouseEntered(MouseEvent me) { }
+        public void mouseExited(MouseEvent me) { }
+        public void mouseClicked(MouseEvent me) { 
+          if(me.getButton() == MouseEvent.BUTTON1) {
+            mouseClicked = true;
+          }
+        }
+    });
         setResizable(false);
         setSize(width, height);
         pack();
@@ -32,51 +48,79 @@ public static GraphicsUI gui = new GraphicsUI();
         setLocationRelativeTo(null);
     }
     
-    public static void checkMouseInfo(ConnectJava cj){
-        
-        int mouse_x=MouseInfo.getPointerInfo().getLocation().x-cj.getLocationOnScreen().x;
-        int mouse_y=MouseInfo.getPointerInfo().getLocation().y-cj.getLocationOnScreen().y;
-        
-        if (mouse_y >= 0 && mouse_y <= height){
-            if (mouse_x >=0 && mouse_x<= 1*(width/7) + 2){
-                pointx = 0;
-            } 
-            else if (mouse_x >1*(width/7)+ 2 && mouse_x<= 2* (width/7)+ 2){
-                pointx = 1*(width/7);
-            } 
-            else if(mouse_x >2* (width/7)+ 2 && mouse_x<= 3* (width/7)+ 2){
-                pointx = 2*(width/7);
-            }
-            else if(mouse_x >3* (width/7)+ 2 && mouse_x<= 4* (width/7)+ 2){
-                pointx = 3*(width/7);
-            }
-            else if(mouse_x >4*(width/7)+ 2 && mouse_x<= 5*(width/7)+ 2){
-                pointx = 4*(width/7);
-            }
-            else if(mouse_x >5*(width/7)+ 2 && mouse_x<= 6*(width/7)+ 2){
-                pointx = 5*(width/7);
-            }
-            else if(mouse_x >6*(width/7)+ 2 && mouse_x<= 7*(width/7)+ 2){
-                pointx = 6*(width/7);
-            }
-            else if(mouse_x < 0 || mouse_x > width){
-                pointx = 90090;
-            }
-        }
-            else {
-                pointx = 90090;
-            }
-        }
-    
-    public static void main(String[] args) {
-        ConnectJava cj = new ConnectJava();
-        cj.setVisible(true);
-        Gameplay gp = new Gameplay();
-        gp.Generate();
-        
+    public static void powerUpSetup(int PU){ // setup parameters for delete piece powerup
+        onColCl = false;
+        pause(100);
         while(true){
-            checkMouseInfo(cj);
-            gui.refresh(pointx, gp.Board);
+            mouseClicked = false;
+            checkMouseInfo(cj, 1);
+            
+            gui.refresh(pointx, pointy, Board);
+            
+            if (onColCl && PU == 1){
+                onColCl = false;
+                pudp.DeletePiece(mx,my,Board);
+                break;
+            } else if (onColCl && PU == 0){
+                onColCl = false;
+                pudp.switchPiece(mx,my,Board);
+                break;
+            }
         }
     }
+    
+    public static void pause(int time){ // create short delay for certain actions
+        try{
+            Thread.sleep(time);
+        }catch(InterruptedException e){
+            //do nothing
+        }
+    }
+    
+    public static void checkMouseInfo(ConnectJava cj, int puNum){ // checking mouse information and calling highlights
+        int mouse_x=MouseInfo.getPointerInfo().getLocation().x-cj.getLocationOnScreen().x;
+        int mouse_y=MouseInfo.getPointerInfo().getLocation().y-cj.getLocationOnScreen().y;
+        if (mouse_y >= 0 && mouse_y <= height+32){
+            mx = (int)Math.floor(mouse_x/100);
+            my = (int)Math.floor((mouse_y - 32)/100); // reduced by 32 to accomodate for the window bar
+            pointx = mx*100;
+           
+            if (puNum == 1){ // special values created for DeletePiece power up
+                pointy = my*100;
+                if (mouseClicked){
+                    onColCl = true;
+                }
+            } else {pointy = 90900;}
+            
+            if (mouseClicked && puNum == 0){ // check if mouse clicked with column boundaries
+                onColCl = true;
+            }
+        }
+        else {
+            pointx = 90090;
+            }
+    }
+    
+    public static void main(String[] args) {
+        gp = new Gameplay(gui);
+        Game();
+    }
+    
+    
+    public static void Game(){ // main game method (loop)
+        cj.setVisible(true);
+        Board = gp.Generate(Board);
+        
+        while(Gameplay.winner == 0){
+            mouseClicked = false;
+            checkMouseInfo(cj, 0);
+           
+            if (onColCl){
+                onColCl= false;
+                gp.placePiece(mx,my,Board);
+            }
+            gui.refresh(pointx, pointy, Board);
+        }
+        }
+    
 }
