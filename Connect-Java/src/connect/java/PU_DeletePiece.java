@@ -12,7 +12,6 @@ package connect.java;
 public class PU_DeletePiece extends PowerUps{
     int[][] Board; 
     public void DeletePiece(int click_y, int click_x, int[][] Board){
-        System.out.println("You can delete one of your opponent's pieces!");
         if (Board[click_x][click_y] == 0 || Board[click_x][click_y] == 3 || Board[click_x][click_y] == 4 || Board[click_x][click_y] == 5) {
             System.out.println("You cannot pick a powerup/empty square to delete");
             ConnectJava.powerUpSetup(1);
@@ -42,7 +41,6 @@ public class PU_DeletePiece extends PowerUps{
         }        
     }
     public void switchPiece(int click_y, int click_x, int[][] Board){
-        System.out.println("You can switch one of your opponent's pieces for your own!");
         if (Board[click_x][click_y] == 0 || Board[click_x][click_y] == 3 || Board[click_x][click_y] == 4 || Board[click_x][click_y] == 5) {
             System.out.println("You cannot pick a powerup/empty square to switch");
             ConnectJava.powerUpSetup(0);

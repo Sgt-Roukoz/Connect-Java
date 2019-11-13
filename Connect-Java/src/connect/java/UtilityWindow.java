@@ -247,8 +247,8 @@ public class UtilityWindow extends javax.swing.JFrame {
         }
         
     }
-    public void ender(){
-        switch(Gameplay.winner){
+    public void ender(int winner){
+        switch(winner){
             case 1:
                 jTextField3.setText("Red wins");
                 break;

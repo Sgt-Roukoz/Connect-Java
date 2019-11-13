@@ -67,7 +67,8 @@ public class Gameplay {
             switch(Board[checkrow][Column]){
                 case 0:
                     gui.startAnimate(Column, checkrow, turnnum);
-                    //Board[checkrow][Column] = turnnum;
+                    ConnectJava.pause(350);
+                    Board[checkrow][Column] = turnnum;
                     if(turnnum == 1){
                         turnnum = 2;
                     }
@@ -99,7 +100,6 @@ public class Gameplay {
                     whichpowerup = 4;
                     show.pwrup();
                     gui.startAnimate(Column, checkrow, turnnum);
-                    //PU_DeletePiece.pup = 0;
                     breakout = 1;
                     break;
                 case 5:                   
@@ -145,15 +145,13 @@ public class Gameplay {
                     counter2 = 0;
                 }
                 if (counter1>=4){
-                    //This is a placeholder for what will actually happen should someone win
                     winner = 1;
-                    show.ender();
+                    show.ender(winner);
                     return;//stops method execution
                 }
                 else if (counter2>=4){
-                    //This is a placeholder for what will actually happen should someone win
                     winner = 2;
-                    show.ender();
+                    show.ender(winner);
                     return;
                 }   
                 else{
@@ -179,13 +177,13 @@ public class Gameplay {
                     counter2 = 0;
                 }
                 if (counter1>=4){
-                    //This is a placeholder for what will actually happen should someone win
-                    show.ender();
+                    winner = 1;
+                    show.ender(winner);
                     return;
                 }
                 else if (counter2>=4){
-                    //This is a placeholder for what will actually happen should someone win
-                   show.ender();
+                    winner = 2;
+                    show.ender(winner);
                     return;
                 }   
                 else{
@@ -213,13 +211,13 @@ public class Gameplay {
                     }
                 }
                 if (counter1>=4){
-                    //This is a placeholder for what will actually happen should someone win
-                    show.ender();
+                    winner = 1;
+                    show.ender(winner);
                     return;
                 }
                 else if (counter2>=4){
-                    //This is a placeholder for what will actually happen should someone win
-                    show.ender();
+                    winner = 2;
+                    show.ender(winner);
                     return;
                 }   
                 else{
@@ -247,13 +245,13 @@ public class Gameplay {
                     }
                 }
                 if (counter1>=4){
-                    //This is a placeholder for what will actually happen should someone win
-                    show.ender();
+                    winner = 1;
+                    show.ender(winner);
                     return;
                 }
                 else if (counter2>=4){
-                    //This is a placeholder for what will actually happen should someone win
-                    show.ender();
+                    winner = 2;
+                    show.ender(winner);
                     return;
                 }   
                 else{
@@ -274,6 +272,7 @@ public class Gameplay {
         if(drawcounter >=42){
             System.out.println("Draw!");
             winner = 3;
+            show.ender(winner);
         }
         else{
         //do nothing

@@ -50,7 +50,7 @@ public class ConnectJava extends JFrame{
     
     public static void powerUpSetup(int PU){ // setup parameters for delete piece powerup
         onColCl = false;
-        pause();
+        pause(100);
         
         while(true){
             mouseClicked = false;
@@ -70,9 +70,9 @@ public class ConnectJava extends JFrame{
         }
     }
     
-    public static void pause(){ // create short delay for certain actions
+    public static void pause(int time){ // create short delay for certain actions
         try{
-            Thread.sleep(100);
+            Thread.sleep(time);
         }catch(InterruptedException e){
             //do nothing
         }

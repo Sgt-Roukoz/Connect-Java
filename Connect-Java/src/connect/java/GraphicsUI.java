@@ -49,7 +49,7 @@ public class GraphicsUI extends JPanel {
         pieceY = y*100;
         color = piece;
         animating = true;
-        placePiece = 0;
+        placePiece = -100;
         repaint();
     }
     
@@ -60,11 +60,11 @@ public class GraphicsUI extends JPanel {
             animating = false;
         }
         
-        System.out.println(placePiece);
         pause(5);
         placePiece += 25;
-          if (col == 1){g.setColor(Color.red);}
-          else if (col == 2){g.setColor(Color.yellow);}
+        
+        if (col == 1){g.setColor(Color.red);}
+        else if (col == 2){g.setColor(Color.yellow);}
             
         g.fillOval(pieceX, placePiece, 100, 100);
         repaint();
